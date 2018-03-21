@@ -1,20 +1,17 @@
-var filter = require('./filter_module');
+var filterModule = require('./filter_module');
 
 var path = process.argv[2];
 var typeFilter = process.argv[3];
 
-console.log(process.argv);
-
-var filesFiltered = filter(path, typeFilter, (err, data) => {
+filterModule(path, typeFilter, (err, filteredFiles) => {
         if (err) {
-            console.error(err);
+            // Handle any errors: my way or the highway
+            console.log("There was an error!");
         } else {
-            data.forEach(fileName => {
+            // Print out the filtered files
+            filteredFiles.forEach(fileName => {
                 console.log(fileName);
-                
             });
         }
-
-
     }
 );
